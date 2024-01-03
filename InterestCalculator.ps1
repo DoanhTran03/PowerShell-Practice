@@ -1,3 +1,7 @@
+#Author: Ngoc Doanh Tran
+#Date: 1/3/2024
+#Program to calculate single interest with pre-defined formular and colorful output
+
 [Int]$PrincipalAmount = Read-Host "Please enter the principal amount (0 - 1000) in dollar"
 [Int]$RateOfInterest = Read-Host "Interest rate from the bank (0 - 100)"
 [Int]$Time = Read-Host "Please enter tenure (0 - 120) (in year)"
