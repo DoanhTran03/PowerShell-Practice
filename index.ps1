@@ -16,8 +16,22 @@ Vijay, 123123,  Yes
 Another Person, 123212, No
 #>
 
+$file_name = "employee_eligibility_status.csv"
+Write-Output "Name, EmployeeID, Eligibility" | Out-File $file_name
+
 Get-ChildItem -Path ".\testfolder\*.emp" | ForEach-Object {
     $BaseName = $_.BaseName
     $Components = $BaseName -split "_"
-    $Components
+    
+    $Name = $Components[0]
+    $Id = $Components[1]
+    $JoinDate = $Components[2]
+    $Condition = "YES"
+
+    $JoinDate_Parsed = [datetime]::ParseExact($JoinDate, "yyyy-mm-dd", $null)
+    if ($JoinDate_Parsed -ge (Get-Date).AddYears(-5)) {
+        $Condition = "NO"
+    }
+
+    Write-Output $Name", "$Id", "$Condition | Out-File $file_name -Append
 }
