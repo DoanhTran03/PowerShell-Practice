@@ -16,5 +16,8 @@ Vijay, 123123,  Yes
 Another Person, 123212, No
 #>
 
-$file = Get-ChildItem -Path ".\testfolder\*.emp" 
-$file.BaseName
+Get-ChildItem -Path ".\testfolder\*.emp" | ForEach-Object {
+    $BaseName = $_.BaseName
+    $Components = $BaseName -split "_"
+    $Components
+}
